@@ -1,14 +1,21 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { PlayerType } from "./MainDisplay";
 
 type Props = {
     boxId:number;
+    onReset:boolean;
     playersData: PlayerType;
     onTurnMove: (clickedItem: number) => void;
 };
 
-const GridBox: React.FC<Props> = ({boxId, playersData, onTurnMove }) => {
+const GridBox: React.FC<Props> = ({boxId, onReset, playersData, onTurnMove }) => {
     const [gridSymbol, symbolTask] = useState<string>()
+
+    //reset grid box onReset
+    useEffect(() => {      
+        if(!gridSymbol) return
+        symbolTask('')
+      }, [onReset]);
 
     const onClickHandler = () => {
         onTurnMove(boxId)

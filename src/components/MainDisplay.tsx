@@ -1,20 +1,13 @@
-import React from 'react'
-import './mainDisplay.css'
+import {useState} from 'react'
+import Grid from './Grid'
 
 const MainDisplay = () => {
+  const [isPlayer1, playerTask] = useState(true)
+
   return (
-    <div className="grid-container">
-        <div className="grid-item" onClick={()=> console.log(1)}>
-            1
-        </div>
-        <div className="grid-item">2</div>
-        <div className="grid-item">3</div>  
-        <div className="grid-item">4</div>
-        <div className="grid-item">5</div>
-        <div className="grid-item">6</div>  
-        <div className="grid-item">7</div>
-        <div className="grid-item">8</div>
-        <div className="grid-item">9</div>  
+    <div>
+      <h2>{isPlayer1 ? 'Player 1': 'Player 2'} turn</h2>
+      <Grid />
     </div>
   )
 }

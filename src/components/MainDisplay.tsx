@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import Grid from './Grid'
 
+import logicInput from "../logic/grid.input";
+
 export type PlayerType = {
   isPlayer1: boolean;
   p1_GridSelect: Array<number>;
@@ -16,15 +18,8 @@ const MainDisplay = () => {
 
   const playerTurnHandler = (pressedGrid:number) => {
     
-    if (playersData.isPlayer1){
-      const newGrid = [...playersData.p1_GridSelect, pressedGrid]
-      const newPlayerData = {...playersData, isPlayer1:!playersData.isPlayer1, p1_GridSelect:newGrid}
-      playerTask(newPlayerData)
-    } else {
-      const newGrid = [...playersData.p2_GridSelect, pressedGrid]
-      const newPlayerData = {...playersData, isPlayer1:!playersData.isPlayer1, p2_GridSelect:newGrid} 
-      playerTask(newPlayerData)
-    }
+    const newPlayerData = logicInput.UpdatePlayerData(pressedGrid, playersData)
+    playerTask(newPlayerData)
     
   }
 

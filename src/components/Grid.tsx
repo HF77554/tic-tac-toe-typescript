@@ -1,6 +1,12 @@
+//misc
 import React, {useState} from 'react'
-import { PlayerType } from "./MainDisplay";
 import './grid.css'
+
+//types
+import { PlayerType } from "./MainDisplay";
+
+//components
+import GridBox from "./GridBox";
 
 type Props = {
     playersData: PlayerType;
@@ -11,16 +17,14 @@ const Grid: React.FC<Props> = ({ playersData, onTurnMove }) => {
   const gridId = [1,2,3,4,5,6,7,8,9]
 
   return (
-    <div>
       <div className="grid-container">
         {gridId.map(id => 
-          <div key={id} className="grid-item" onClick={() => onTurnMove(id)}>
-            
-          </div>
+          <GridBox key={id} boxId={id} playersData={playersData} onTurnMove={onTurnMove}/>
         )}
       </div>
-    </div>
   )
 }
 
 export default Grid
+
+//<div key={id} className="grid-item" onClick={() => onTurnMove(id)}>

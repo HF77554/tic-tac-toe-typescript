@@ -4,6 +4,7 @@ import './mainDisplay.css'
 import Grid from './Grid'
 
 import logicInput from "../logic/grid.input";
+import logicWon from "../logic/grid.winning";
 
 export type PlayerType = {
   isPlayer1: boolean;
@@ -23,7 +24,9 @@ const MainDisplay = () => {
 
   const playerTurnHandler = (pressedGrid:number) => {
     const newPlayerData = logicInput.UpdatePlayerData(pressedGrid, playersData)
+    const result = logicWon.checkPlayerWon(newPlayerData)
     playerTask(newPlayerData)
+    //add logic for when game is won, stop from moving, activate modal
   }
 
   const resetHandler = () => {

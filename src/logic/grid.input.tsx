@@ -1,4 +1,3 @@
-
 import { PlayerType } from "../components/MainDisplay";
 
 const UpdatePlayerData = (pressedGrid:number, playersData:PlayerType) => {

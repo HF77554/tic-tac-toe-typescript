@@ -25,8 +25,9 @@ const MainDisplay = () => {
   const playerTurnHandler = (pressedGrid:number) => {
     const newPlayerData = logicInput.UpdatePlayerData(pressedGrid, playersData)
     const result = logicWon.checkPlayerWon(newPlayerData)
-    playerTask(newPlayerData)
     //add logic for when game is won, stop from moving, activate modal
+    if(result) return console.log(result)
+    playerTask(newPlayerData)
   }
 
   const resetHandler = () => {

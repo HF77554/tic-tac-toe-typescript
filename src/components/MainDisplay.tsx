@@ -1,8 +1,11 @@
 import {useState} from 'react'
 import './mainDisplay.css'
 
+//import components
 import Grid from './Grid'
+import Modal from '../modal/Modal'
 
+//import methods
 import logicInput from "../logic/grid.input";
 import logicWon from "../logic/grid.winning";
 
@@ -21,6 +24,7 @@ const originalPlayerStatus = {
 const MainDisplay = () => {
   const [playersData, playerTask] = useState<PlayerType>(originalPlayerStatus)
   const [gameReset, gameResetTask] = useState(false)
+  const [isGameOver, isGameOverTask] = useState(false)
 
   const playerTurnHandler = (pressedGrid:number) => {
     const newPlayerData = logicInput.UpdatePlayerData(pressedGrid, playersData)
@@ -38,6 +42,10 @@ const MainDisplay = () => {
   return (
     <div>
       <h2>{playersData.isPlayer1 ? 'Player 1': 'Player 2'} turn</h2>
+      <button onClick={()=>isGameOverTask(!isGameOver)}>Modal</button>
+      <Modal onGameOver={isGameOver} onModalClose={()=>isGameOverTask(!isGameOver)}>
+        Modal Words
+      </Modal>
       <div className='grid-modal'>
         <Grid playersData={playersData} onReset={gameReset} onTurnMove={playerTurnHandler}/>
       </div>

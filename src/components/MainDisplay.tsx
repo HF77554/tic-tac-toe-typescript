@@ -24,13 +24,13 @@ const originalPlayerStatus = {
 const MainDisplay = () => {
   const [playersData, playerTask] = useState<PlayerType>(originalPlayerStatus)
   const [gameReset, gameResetTask] = useState(false)
-  const [isGameOver, isGameOverTask] = useState(false)
+  const [isGameOver, isGameOverTask] = useState('')
 
   const playerTurnHandler = (pressedGrid:number) => {
     const newPlayerData = logicInput.UpdatePlayerData(pressedGrid, playersData)
     const result = logicWon.checkPlayerWon(newPlayerData)
     //add logic for when game is won, stop from moving, activate modal
-    if(result) return console.log(result)
+    if(result) return isGameOverTask(result)
     playerTask(newPlayerData)
   }
 
@@ -42,10 +42,8 @@ const MainDisplay = () => {
   return (
     <div>
       <h2>{playersData.isPlayer1 ? 'Player 1': 'Player 2'} turn</h2>
-      <button onClick={()=>isGameOverTask(!isGameOver)}>Modal</button>
-      <Modal onGameOver={isGameOver} onModalClose={()=>isGameOverTask(!isGameOver)}>
-        Modal Words
-      </Modal>
+      <button onClick={()=>isGameOverTask('Word')}>Modal</button>
+      <Modal onGameWin={isGameOver} onModalClose={()=>isGameOverTask('')} />
       <div className='grid-modal'>
         <Grid playersData={playersData} onReset={gameReset} onTurnMove={playerTurnHandler}/>
       </div>

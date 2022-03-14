@@ -4,6 +4,10 @@ const checkPlayerWon = (playersData:PlayerType) => {
     
     const winningCombinations= [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
 
+    //if all grid blocks are filled
+    if( playersData.p1_GridSelect.length + playersData.p2_GridSelect.length === 9) return 'Draw'
+
+
     if(!playersData.isPlayer1) {
         //player 1 winning
         const result = winningCombinations.map(arr => arr.every(i => playersData.p1_GridSelect.includes(i) )).includes(true)

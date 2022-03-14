@@ -1,4 +1,16 @@
+.overlay_styles{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, .7);
+    z-index: 1000;
+}
+
 .modal_styles {
+    cursor: context-menu;
+    font-size: 32px;
     position: fixed;
     top: 50%;
     left:50%;
@@ -8,12 +20,15 @@
     z-index: 1000;
 }
 
-.overlay_styles{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(0, 0, 0, .7);
-    z-index: 1000;
+.modal_close {
+    font-size: 16px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_close:hover {
+    color: rgba(255, 0, 0, 0.562);
 }

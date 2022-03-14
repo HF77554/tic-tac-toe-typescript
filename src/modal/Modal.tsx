@@ -13,9 +13,12 @@ const Modal: React.FC<Props> = ({onGameWin, onModalClose}) => {
     return ReactDOM.createPortal(
         <>
             <div className='overlay_styles' />
+            
             <div className='modal_styles'>
                 {onGameWin}
-                <button onClick={onModalClose}>Close Modal</button>
+                <div className='modal_close' onClick={onModalClose}>
+                    X
+                </div>
             </div>
         </>,
         document.getElementById('portal')!

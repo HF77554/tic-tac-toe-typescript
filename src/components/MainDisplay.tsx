@@ -41,14 +41,19 @@ const MainDisplay = () => {
 
 
   return (
-    <div>
+    <>
       <h2>{playersData.isPlayer1 ? 'Player 1': 'Player 2'} turn</h2>
+
       <Modal onGameWin={isGameOver} onModalClose={resetGameHandler} />
+
       <div className='grid-modal'>
         <Grid playersData={playersData} onReset={gameReset} onTurnMove={playerTurnHandler}/>
       </div>
-      <button onClick={resetGameHandler}>RESET</button>
-    </div>
+
+      <div className='reset-btn-container'>
+        <button className='reset-btn' onClick={resetGameHandler}>RESET</button>
+      </div>
+    </>
   )
 }
 

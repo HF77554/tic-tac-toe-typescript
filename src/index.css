@@ -2,10 +2,10 @@ body {
   margin: 0;
   text-align: center;
   font-family: "Audiowide", sans-serif;
+  cursor: context-menu;
 }
 
 html {
-  /* Created with https://www.css-gradient.com */
   background: #B3E8FF;
   background: linear-gradient(to bottom, #B3E8FF, #FFFFFF);
   background-repeat: no-repeat;
